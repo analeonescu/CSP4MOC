@@ -5,7 +5,7 @@ import pandas as pd
 
 query = "ammonia"  # this is what you type in the browser to 'Search' 
 # - it can appear anywhere in the entry, not necessarily in the title!!!!
-start_date = datetime.strptime("2025-05-16", "%Y-%m-%d")
+start_date = datetime.strptime("2026-04-16", "%Y-%m-%d")
 end_date = datetime.today()
 
 current_date = start_date
@@ -47,5 +47,5 @@ while current_date <= end_date:
     time.sleep(0.2) # to make sure the server doesn't crash
 
 df = pd.DataFrame(results)  # save the results 
-df.to_csv('Test_ammonia_cracking.csv', index=False)
+df.to_csv('Test_ammonia.csv', index=False)
 
