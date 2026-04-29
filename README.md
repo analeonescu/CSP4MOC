@@ -29,7 +29,7 @@ This repository contains code for:
 │   ├── calcs/           # Simulation drivers
 │   ├── analysis/        # Post-processing scripts
 │   └── converters/      # File format converters
-├── workflows/           # High-level workflows
+├── sampling/            # Sampling scripts
 ├── cluster_scripts/     # Job submission scripts
 ├── notebooks/           # Jupyter notebooks for analysis
 ├── configs/             # Input templates
@@ -38,10 +38,16 @@ This repository contains code for:
 
 ## Requirements
 
-This project requires Python 3.8+. Python dependencies are listed in requirements.txt and can be installed via <pip install -r requirements.txt>. Note that stk requires rdkit, which must be installed separately via conda (conda install -c conda-forge rdkit) before installing the remaining packages.
-Three external codes must be installed independently and available on your PATH:  GULP (v6.1.2, academic licence required), xTB (v6.3.3), and CP2K (v8.2). The MLIP workflow stages additionally require a CUDA-capable GPU. Job submission scripts for HPC environments are provided in cluster_management/.
+This project requires Python 3.8+. Python dependencies are listed in 'requirements.txt' and can be installed via 'pip install -r requirements.txt'. Note that 'stk' requires 'rdkit', which must be installed separately via conda ('conda install -c conda-forge rdkit') before installing the remaining packages.
+Four external packages must be installed independently and available on your PATH:  GULP (v6.1.2, academic licence required), xTB (v6.3.3), janus (v0.7.0) and CP2K (v8.2). The MLIP workflow stages additionally require a CUDA-capable GPU. Job submission scripts for HPC environments are provided in cluster_management/.
 
 ## Usage
+
+Starting with initial .xyz file of the cage cluster and corresponding counterion, .cif or .xyz files can be produced with the scripts in 'sampling'. Then, depending on the level of theory desired, they can be geometry optimised with one of the scripts in 'calcs'. The output format can be converted depending on the next step.
+
+### MLIP driven CSP
+
+### FF and semi-empirical driven CSP
 
 ### Running Calculations
 
