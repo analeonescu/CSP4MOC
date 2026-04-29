@@ -1,6 +1,6 @@
-# Multi-Theory-Level Material Discovery
+# Crystal structure prediction pipeline for Metal-Organic Cages
 
-Repository containing simulation workflows and analysis tools used for material discovery across different theory levels (force fields, semi-empirical, DFT).
+Repository containing simulation workflows and analysis tools used for material discovery in the field of metal-organic cages (MOCs).
 
 ## Overview
 
