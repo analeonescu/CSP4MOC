@@ -1,3 +1,7 @@
+"""Reads all xtbopt.xyz files in the specified directory, 
+extracts energy values, and saves them to a CSV file."""
+
+
 import pandas as pd
 
 def find_energy(file_path):
@@ -7,7 +11,6 @@ def find_energy(file_path):
             for line in lines:
                 print(line.split())
                 if line.split()[0] =='energy:':
-                    # Assuming the number is the part of the line after 'energy:'
                     energy_value = float(line.split()[1])
                     return energy_value
         print("No line starting with 'energy:' found in the file.")
@@ -20,7 +23,7 @@ def find_energy(file_path):
         return None
 
 energy_dict = {}
-for file_num in range(1, 101):
+for file_num in range(1, 2001):
     file_path = fr"C:\Users\aleon\OneDrive\Desktop\new_xtb_structures\{file_num}\xtbopt.xyz"
     energy_value = find_energy(file_path)
     if energy_value:
@@ -28,6 +31,6 @@ for file_num in range(1, 101):
 
 energy_df = pd.DataFrame(energy_dict.items(), columns=['Conformation no.', 'Energy/ Eh'])
 energy_df.sort_values(by='Energy/ Eh', inplace=True)
-energy_df.to_csv('xtb_energies_1_unit_2nd_attempt.csv', index=False)
+energy_df.to_csv('xtb_energiest.csv', index=False)
 
 

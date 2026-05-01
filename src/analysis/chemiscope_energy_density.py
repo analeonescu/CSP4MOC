@@ -1,3 +1,6 @@
+'''
+This script reads .extxyz files, extracts energy values, calculates density, and identifies space groups
+from file names. It then compiles this information into a .json file for visualisation with Chemiscope.'''
 import chemiscope
 import ase.io
 import re

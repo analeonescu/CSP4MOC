@@ -1,6 +1,7 @@
 """
 Create multiple job.sh copies for GULP gin files.
-"""
+It is more time efficient to queue multiple quick jobs (~ 3 min)
+than one longer one (~48 h)."""
 
 import argparse
 import os
@@ -10,10 +11,6 @@ def main():
     parser = argparse.ArgumentParser(description='Create GULP job files')
     parser.add_argument('--name', '-n', default='xtal_OH_pf6',
                         help='System name prefix')
-    parser.add_argument('--spg-start', type=int, default=1,
-                        help='Starting space group')
-    parser.add_argument('--spg-end', type=int, default=33,
-                        help='Ending space group')
     parser.add_argument('--start', type=int, default=1,
                         help='Starting file number')
     parser.add_argument('--end', type=int, default=1000,
@@ -23,7 +20,7 @@ def main():
     
     args = parser.parse_args()
     
-    for spg in range(args.spg_start, args.spg_end + 1):
+    for spg in [1, 2, 3, 9, 14, 19, 33]:
         for num in range(args.start, args.end + 1):
             gin_file = f'{args.name}_sg_{spg}_{num}_rigid_uff.gin'
             
@@ -33,7 +30,7 @@ def main():
                 os.system(f'cp job.sh job_sg_{spg}_{num}.sh')
                 os.system(f'cat tmp >> job_sg_{spg}_{num}.sh')
 
-    print('Done')
+    print(f'Done for {spg} {num}')
 
 
 if __name__ == "__main__":

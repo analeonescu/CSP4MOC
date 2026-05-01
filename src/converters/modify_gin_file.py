@@ -2,8 +2,8 @@
 Modify GULP input files (.gin) for different theory levels.
 
 Usage:
-    python modify_uff_rigid.py --theory uff --dir . --pattern "xtal_*.gin"
-    python modify_uff_rigid.py --theory gfnff --dir . --pattern "xtal_*.gin"
+    python modify_gin_file.py --theory uff --dir . --pattern "xtal_*.gin"
+    python modify_gin_file.py --theory gfnff --dir . --pattern "xtal_*.gin"
 """
 
 import argparse
@@ -16,12 +16,9 @@ def modify_gulp_input(file_path, theory):
     """
     Modify a GULP input file for the specified theory level.
     
-    Parameters
-    ----------
-    file_path : str
-        Path to the .gin input file.
-    theory : str
-        Theory level: 'uff' or 'gfnff'
+    Args:
+        file_path (str): Path to the .gin input file.
+        theory (str): Theory level: 'uff' or 'gfnff'
     """
     if theory == 'uff':
         target_word = 'opti'
@@ -41,7 +38,7 @@ def modify_gulp_input(file_path, theory):
             f'output xyz {os.path.basename(file_path).strip(".gin")}_gfnff.cif'
         ]
     else:
-        raise ValueError(f"Unknown theory: {theory}. Use 'uff' or 'gfnff'")
+        raise ValueError(f"Unknown level of theory: {theory}. Use 'uff' or 'gfnff'")
     
     with open(file_path, 'r') as file:
         lines = file.readlines()
@@ -68,7 +65,7 @@ def main():
     parser.add_argument('--pattern', '-p', default='*.gin',
                         help='File pattern to match (default: *.gin)')
     parser.add_argument('--dry-run', action='store_true',
-                        help='Show what would be modified without changing files')
+                        help='Perform a dry run without modifying files')
     
     args = parser.parse_args()
     
@@ -83,7 +80,6 @@ def main():
         print(f"No files found matching: {args.pattern}")
         return 1
     
-    print(f"Found {len(files)} file(s) to modify")
     print(f"Theory level: {args.theory}")
     
     if args.dry_run:
@@ -92,8 +88,7 @@ def main():
             print(f"  {f}")
         return 0
     
-    # Process each file
-    for i, file_path in enumerate(files, 1):
+    for _, file_path in enumerate(files, 1):
         try:
             modify_gulp_input(file_path, args.theory)
             print(f"Modified: {file_path}")
