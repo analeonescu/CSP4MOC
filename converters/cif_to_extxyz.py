@@ -1,8 +1,10 @@
 """
-CIF to EXTXYZ Converter
+File converter: CIF to EXTXYZ
 
 Convert CIF crystal structure files to extended XYZ format.
 Can process multiple files and combine them into one.
+particularly useful for chemiscope visualisation, 
+which can handle EXTXYZ but not CIF directly.
 
 Usage:
     python converter_cif_to_extxyz.py --input "*.cif" --output combined.extxyz

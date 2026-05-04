@@ -1,5 +1,5 @@
+'''Generates discrete cages with iron(II) centers and imide ligands.'''
 import stk
-
 
 def build_iron_atom():
     return stk.BuildingBlock(

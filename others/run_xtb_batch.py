@@ -5,7 +5,6 @@ Creates directories and runs xTB for each structure.
 
 import argparse
 import os
-import sys
 
 
 def run_xtb(file_num, base_dir, input_pattern):

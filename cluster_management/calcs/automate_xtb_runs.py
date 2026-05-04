@@ -2,8 +2,9 @@
 Automate xTB GFN-FF calculations for multiple structures.
 Creates directories and runs xTB for each structure.
 Runs xtb with GFN-FF on a set of xyz files in parallel.
-This script is intended to be run on a cluster but serialised will
-be the fastest due to the initial overhead associated with gfn-ff.
+This script is intended to be run on a cluster but serialised 
+will be the fastest due to the initial overhead runtime 
+associated with gfn-ff.
 """
 
 import argparse

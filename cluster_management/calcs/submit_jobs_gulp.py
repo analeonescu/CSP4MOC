@@ -1,5 +1,6 @@
 """
-Submit GULP jobs to cluster if gin exists and gout doesn't.
+Submit GULP jobs to cluster if gin exists and gout doesn't,
+i.e. if the calculation hasn't run before.
 Limits submissions to avoid hitting cluster limits.
 """
 

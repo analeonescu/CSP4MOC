@@ -27,19 +27,13 @@ def convert_xyz_to_extxyz(xyz_file, output_file, append=False):
     """
     Convert a single XYZ file to EXTXYZ format.
     
-    Parameters
-    ----------
-    xyz_file : str
-        Path to input XYZ file.
-    output_file : str
-        Path for output EXTXYZ file.
-    append : bool
-        If True, append to output file instead of overwriting.
+    Args:
+        xyz_file (str): Path to input XYZ file.
+        output_file (str): Path for output EXTXYZ file.
+        append (bool): If True, append to output file instead of overwriting.
     
-    Returns
-    -------
-    bool
-        True if conversion successful, False otherwise.
+    Returns: 
+        bool: True if conversion successful, False otherwise.
     """
     if not os.path.exists(xyz_file):
         print(f"Warning: File not found: {xyz_file}")
