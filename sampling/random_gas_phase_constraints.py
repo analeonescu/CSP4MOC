@@ -1,5 +1,5 @@
 """
-Create different cluster/counterion .xyz files (non-periodic, gasphase)
+Creates different cluster/counterion .xyz files (non-periodic, gasphase)
 with random coordinates, with a predetermined cutoff distance between 
 different ionic components.
 """

@@ -10,7 +10,7 @@ import os
 def main():
     parser = argparse.ArgumentParser(description='Create GULP job files')
     parser.add_argument('--name', '-n', default='xtal_OH_pf6',
-                        help='System name prefix')
+                        help='System name prefix, as seen in th efile prefix')
     parser.add_argument('--start', type=int, default=1,
                         help='Starting file number')
     parser.add_argument('--end', type=int, default=1000,

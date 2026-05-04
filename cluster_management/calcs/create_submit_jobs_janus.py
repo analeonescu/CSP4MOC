@@ -1,19 +1,13 @@
 from pathlib import Path
 import subprocess
 
-sys_name_list = ['SO3_NMe4', 'Me_SO4']
+sys_name_list = ['SO3_NMe4', 'Me_SO4'] # etc. add more system names as needed
 space_groups = [1, 2, 3, 9, 14, 19, 33]
 
 for name in sys_name_list:
     for spg in space_groups:
-
-        # Prepare job script path
         job_script = Path(f"job_{name}_{spg}.sh")
-
-        # Start fresh from template
-        subprocess.run(["cp", "job.sh", job_script])
-
-        # Collect lines to append
+        subprocess.run(["cp", "job.sh", job_script]) # make sure job.sh is the template you want to use
         lines_to_add = []
 
         for num in range(1, 2001):
@@ -38,9 +32,7 @@ for name in sys_name_list:
                     )
                     lines_to_add.append(cmd)
 
-        # Append all commands at once
         if lines_to_add:
             job_script.write_text(job_script.read_text() + "".join(lines_to_add))
 
-        # Submit job
         subprocess.run(["qsub", "-N", f"{name}_{spg}", str(job_script)])
