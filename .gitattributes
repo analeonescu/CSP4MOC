@@ -1,0 +1,2 @@
+# Keep analysis notebooks in the repository without counting their JSON in language statistics
+analysis/notebooks/*.ipynb linguist-documentation
