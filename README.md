@@ -1,4 +1,4 @@
-# CSP4MOC — Crystal Structure Prediction for Metal-Organic Cages
+# CSP4MOC - Crystal Structure Prediction for Metal-Organic Cages
 
 Simulation workflows and analysis tools for crystal structure prediction (CSP) of metal-organic cages (MOCs), developed as part of my PhD thesis and an accompanying publication (in preparation). The pipeline was used to study and analyse four cage systems.
 
