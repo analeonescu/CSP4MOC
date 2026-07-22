@@ -85,11 +85,11 @@ The calculations behind the published results were run on UCL's HPC clusters: My
 
 The pipeline follows a hierarchical CSP funnel (cheap → expensive), applied to four Fe₄ tetrahedral cage systems (each with more than one counterion variant):
 
-1. Gas-phase screening. For each cage–counterion stoichiometric unit, 2,000 configurations were randomly generated with PyXtal (no periodic boundary conditions), geometry-optimised with xTB/GFN-FF (vtight convergence), and ranked by cohesive energy.
+1. Gas-phase screening. For each cage–counterion stoichiometric unit, 2000 configurations were randomly generated with PyXtal (no periodic boundary conditions), geometry-optimised with xTB/GFN-FF (vtight convergence), and ranked by cohesive energy.
 
-2. Periodic sampling (force field). The top 1,000 lowest-energy gas-phase configurations were used to seed periodic unit cells — 3 cells per space group across 7 commonly observed space groups (P1, P-1, P2, Cc, P2₁/c, P2₁2₁2₁, Pna2₁), giving ~21,000 candidate structures, geometry-optimised with GULP/UFF under the rigid-unit + minimum-image approximation (BFGS, force convergence 0.1 eV Å⁻¹).
+2. Periodic sampling (force field). The top 1000 lowest-energy gas-phase configurations were used to seed periodic unit cells - 3 cells per space group across 7 commonly observed space groups (P1, P-1, P2, Cc, P2₁/c, P2₁2₁2₁, Pna2₁), giving ~21000 candidate structures, geometry-optimised with GULP/UFF under the rigid-unit + minimum-image approximation (BFGS, force convergence 0.1 eV Å⁻¹).
 
-3. MLIP-driven refinement. For the four systems taken forward, unit cells of 1, 2, and 4 cages were sampled in the P1 space group only (2,000 configurations per cell size, 10 Å cutoffs), then optimised with MACE-MOF-v2 via janus-core using a staged-pressure protocol (high external pressure first, e.g. 5–50 GPa depending on cell size, then relaxed at 0 GPa; force convergence 0.005 eV Å⁻¹). The lowest-energy structures were validated with NVT molecular dynamics (300 K, 20,000 steps, 0.5 fs timestep) to confirm they sat in genuine energy minima rather than sampling artefacts.
+3. MLIP-driven refinement. For the four systems taken forward, unit cells of 1, 2, and 4 cages were sampled in the P1 space group only (2000 configurations per cell size, 10 Å cutoffs), then optimised with MACE-MOF-v2 via janus-core using a staged-pressure protocol (high external pressure first, e.g. 5–50 GPa depending on cell size, then relaxed at 0 GPa; force convergence 0.005 eV Å⁻¹). The lowest-energy structures were validated with NVT molecular dynamics (300 K, 20000 steps, 0.5 fs timestep) to confirm they sat in genuine energy minima rather than sampling artefacts.
 
 4. DFT refinement. The lowest-energy candidates from each stage were refined with CP2K (PBE + D3, GTH pseudopotentials, MOLOPT basis sets, 300 Ry cutoff) for a final accuracy check and to benchmark the MLIP energies (R² = 0.934 against MACE across all sampled cell sizes).
 
