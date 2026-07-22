@@ -154,4 +154,4 @@ A publication describing this pipeline is currently in preparation. Citation det
 
 ## License
 
-MIT License — see [LICENSE](LICENSE) for details.
+MIT License - see [LICENSE](LICENSE) for details.
