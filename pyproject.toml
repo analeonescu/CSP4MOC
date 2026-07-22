@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "csp4moc"
+version = "0.1.0"
+description = "Simulation wrapper and analysis tools for a crystal structure prediction pipeline of metal-organic cages"
+requires-python = ">=3.8"
+dependencies = [
+    "numpy",
+    "pandas",
+    "ase",
+    "plotly",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]

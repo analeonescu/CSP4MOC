@@ -34,6 +34,10 @@ Structures are generally funnelled from cheap to expensive methods: bulk samplin
 ├── converters/                # File format conversion between pipeline stages
 ├── analysis/                  # Energy/density extraction, database building, visualisation
 │   └── notebooks/             # Notebooks for MACE/janus and GULP post-processing
+├── src/csp4moc/               # Reusable package built alongside the original scripts
+│   ├── io.py                  # Structure and calculation-output readers
+│   ├── analysis.py            # Ranking and result-processing helpers
+│   └── plotting.py            # Reusable analysis plots
 ├── cluster_management/        # HPC job creation, submission, and CP2K input examples
 │   ├── calcs/
 │   ├── cp2k_examples/
@@ -43,24 +47,35 @@ Structures are generally funnelled from cheap to expensive methods: bulk samplin
 └── README.md
 ```
 
+The original scripts and notebooks are retained for reproducibility. New code can
+import reusable functionality from `csp4moc` without requiring the existing
+workflow to be reorganised.
+
 ## Requirements
 
 - Python 3.8+
-- Scientific Python stack: `numpy`, `pandas`, `ase`
+- Scientific Python stack: `numpy`, `pandas`, `ase`, `plotly`
 - `stk` for cage construction (requires `rdkit`, install via `conda install -c conda-forge rdkit` before other packages)
 - `pyxtal` for random crystal/cluster sampling
 - `chemiscope` for interactive structure/energy visualisation
 
 See `requirements.txt` for a pinned install list.
 
+To install the reusable package in editable mode from the repository root:
+
+```bash
+python -m pip install -e .
+```
+
 External codes (must be installed separately and available on `PATH`):
 
 | Tool | Version used | Notes |
 |---|---|---|
 | GULP | 6.1.2 | Academic licence required |
-| xTB | 6.3.3 | |
+| xTB | 6.3.3 | Available on local machines|
 | janus | 0.7.0 | MLIP driver for MACE |
-| CP2K | 8.2 | |
+| CP2K | 8.2 | Academic licence required |
+| Zeo++ | 0.3 | Available open-source |
 
 The MLIP (janus/MACE) stage additionally requires a CUDA-capable GPU.
 
@@ -123,6 +138,15 @@ python analysis/xtb_read_energy.py
 python analysis/chemiscope_energy_density.py
 ```
 Notebooks in `analysis/notebooks/` cover MACE/janus-specific post-processing (porosity, MD trajectories) and GULP energy/density visualisation.
+
+New notebooks can use the package, for example:
+
+```python
+from csp4moc.analysis import load_gulp_results, rank_structures
+
+results = load_gulp_results("results/gulp")
+ranked = rank_structures(results)
+```
 
 ## Citation
 
