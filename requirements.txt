@@ -1,0 +1,18 @@
+# Python dependencies for CSP4MOC
+# Note: rdkit must be installed separately via conda before the rest of this list:
+#   conda install -c conda-forge rdkit
+#   pip install -r requirements.txt
+ 
+stk==2024.10.2.0        # cage construction; 2022.1.26.0 also used in earlier stages of the work
+pyxtal==1.0.4           # gas-phase and periodic cluster/cell sampling
+ase                     # Atoms objects, I/O, database handling
+pandas
+numpy
+chemiscope              # interactive structure/energy/density visualisation
+ 
+# External codes required separately (not installable via pip) — see README for versions and setup:
+#   GULP 6.1.2      (academic licence required; UFF force-field screening)
+#   xTB 6.3.3       (GFN-FF semi-empirical optimisation)
+#   janus-core 0.7.0 (MACE-MOF-v2 MLIP driver; requires CUDA-capable GPU, CUDA 11.3.1 used)
+#   CP2K 8.2         (DFT refinement, PBE + D3)
+#   Zeo++            (porosity descriptors: Di / Df)
